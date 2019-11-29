@@ -1,0 +1,21 @@
+1.  新建虚拟机无法查看ip地址
+    vim /etc/sysconfig/network-scripts/ifcfg-enss3
+    修改  ONBOOT=yes
+    service network restart
+
+2.  新建虚拟机无法ssh连接
+    vim /etc/ssh/sshd_config
+    设置PermitRootLogin yes
+    systemctl restart sshd
+    
+3.  SSH连接断开
+    1)  vim /etc/ssh/sshd_config
+        外部链接权限 PermitRootLogin yes
+        超时登录修改 ClientAliveInterval 300000
+        ClientAliveInterval 50000
+        改后记得生效 systemctl restart sshd
+
+    2)  vim /etc/profile
+        修改 export TMOUT=9300
+        修改后记得生效 source /etc/profile
+
