@@ -1,0 +1,2 @@
+CentOS安装g++
+  yum install gcc gcc-c++
