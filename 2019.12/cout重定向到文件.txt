@@ -1,0 +1,34 @@
+cout默认是与监视器（屏幕）相连，cout出来的内容会输出到屏幕上，通常是会在命令行窗口之中。但有时，我们希望将cout出来的具体日志、错误信息写到某个文件之中，而屏幕上仅仅显示出当前进行的任务，以及程序运行状态等信息。我们可以使用下面重定向的方式来实现：
+
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+
+ int main(int argc, char* argv[])
+{
+    using namespace std;
+
+    cout << "Hello, Let's begin a test of cout to file." << endl;
+    // 保存cout流缓冲区指针
+     streambuf* coutBuf = cout.rdbuf();
+
+    ofstream of("out.txt");
+    // 获取文件out.txt流缓冲区指针
+     streambuf* fileBuf = of.rdbuf();
+    
+    // 设置cout流缓冲区指针为out.txt的流缓冲区指针
+     cout.rdbuf(fileBuf);
+    cout << "Name " << "Chen"        << endl;
+    cout << "Sex  " << "Female"      << endl;
+    cout << "E-mail"<< "Chen@qq.com" << endl;
+
+    of.flush();
+    of.close();
+
+    // 恢复cout原来的流缓冲区指针
+     cout.rdbuf(coutBuf);
+    cout << "Write Personal Information over..." << endl;
+
+    system("PAUSE");
+    return 0;
+}
