@@ -11,8 +11,7 @@
 3.  SSH连接断开
     1)  vim /etc/ssh/sshd_config
         外部链接权限 PermitRootLogin yes
-        超时登录修改 ClientAliveInterval 300000
-        ClientAliveInterval 50000
+        超时登录修改 ClientAliveInterval 21474836
         改后记得生效 systemctl restart sshd
 
     2)  vim /etc/profile
