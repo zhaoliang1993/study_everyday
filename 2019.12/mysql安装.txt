@@ -1,0 +1,20 @@
+下载yum源的安装包 
+   yum localinstall https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
+
+安装
+   yum install mysql-community-server
+
+启动服务
+  service mysqld start
+
+查看状态 
+  service mysqld status
+
+查看初始密码
+  grep 'temporary password' /var/log/mysqld.log
+  
+登录更改密码
+  mysql -uroot -p
+
+修改密码
+  ALTER USER 'root'@'localhost' IDENTIFIED BY '你的密码'
