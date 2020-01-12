@@ -1,0 +1,54 @@
+首先在rpmbuild目录下建立BUILD  RPMS  SOURCES  SPECS  SRPMS文件夹
+
+下载avxsynth源码
+
+将源码目录改为带有版本号的格式avxsynth-4.0
+
+将目录压缩成.tar.bz2格式
+tar -cjvf avxsynth-4.0.tar.bz2 avxsynth-4.0
+
+
+然后书写specfile控制文件
+
+先建立一个控制RPM编译的控制文件，就是specfile
+
+#开头是版权注释
+
+Version是版本号，即4.0
+Release是发布号，也就是这个RPM在成型前编译了几次
+
+
+##定义RPM宏
+RPM specfile可以简单的定义属于自己的宏
+%define 宏名称 宏体
+%{宏名称}来使用宏
+
+eg：
+  Version:    4.0
+  %define rel marguerite
+  Release:    0.%{rel}
+  这样的Release会形成一个avxsynth-4.0-0.avxsynth.rpm这样的软件包。
+
+##License
+许可协议，在copyright文件中查找，有时候会在源码根目录放一个COPYING的文本文档，或者写在软件的主页上。
+
+##Summary是一个短语，不能有句号
+简单的说明这个包是干什么的
+
+##URL
+上游网站的地址
+
+##Group
+RPM群组，也就是这个软件包在RPM软件包数据库中的分类。
+
+##Source
+制作的源码tar.bz2包
+这里我们需要用宏来写,%{name}.%{version}
+
+##Patch 补丁文件
+
+##BuildRequires
+编译依赖，即想要编译这个包，需要安装什么开发头文件包。
+在这里需要build-essential checkinstall git pkg-config yasm autoconf automake libtool
+checkinstall是一个制作二进制包的工具，RPM本省就把它替代了
+一个依赖 写一行
