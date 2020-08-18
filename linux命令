@@ -1,0 +1,2 @@
+新建用户
+  useradd -d /home/test -m test;
