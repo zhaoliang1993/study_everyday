@@ -6,9 +6,9 @@ openCV滤镜算法：https://www.cnblogs.com/mangoroom/p/11128738.html
 
 W3school:https://www.w3school.com.cn/h.asp
 
-docker部署web:https://blog.csdn.net/wellway/article/details/89887791
+docker部署：web:https://blog.csdn.net/wellway/article/details/89887791
 
-nodejs获取域名
+nodejs获取域名：https://bbs.csdn.net/topics/80158132
 
 	
 94.191.106.45
